@@ -5,7 +5,7 @@ resource "aws_instance" "runner-server" {
   tags = {
     Name        = "Release-Notes-Publisher-Core"
     Environment = "dev"
-    Project     = "pipeline"
+    Project     = "Release-Notes-Publisher"
   }
 
   user_data = <<-EOF
@@ -40,15 +40,13 @@ resource "aws_instance" "runner-server" {
 }
 
 resource "aws_instance" "second-server" {
-  ami           = "ami-0453ec754f44f9a4a"  # AMI de Amazon Linux
+  ami           = "ami-0453ec754f44f9a4a"
   instance_type = "t2.micro"
 
   tags = {
-    Name        = "Terraform-Second-Server"
+    Name        = "Release-Notes-Publisher-Web"
     Environment = "dev"
-    Owner       = "angeloquenta@gmail.com"
-    Team        = "DevOps"
-    Project     = "pipeline"
+    Project     = "Release-Notes-Publisher"
   }
 
   user_data = <<-EOF

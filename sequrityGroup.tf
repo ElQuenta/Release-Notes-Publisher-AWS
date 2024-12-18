@@ -4,7 +4,7 @@ resource "aws_key_pair" "runner-server-ssh" {
 }
 
 resource "aws_security_group" "runner-server-sg" {
-  name        = "runner-server-sg"
+  name        = "Release-Notes_Publisher-sg"
   description = "Security group for runner EC2 instance"
 
   ingress {
@@ -17,6 +17,12 @@ resource "aws_security_group" "runner-server-sg" {
   ingress {
     from_port   = 3000
     to_port     = 3000
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 4000
+    to_port     = 4000
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
