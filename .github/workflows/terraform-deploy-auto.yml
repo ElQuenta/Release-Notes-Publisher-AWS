@@ -26,13 +26,13 @@ jobs:
 
       - name: Generate RSA Key Pair
         run: |
-          ssh-keygen -t rsa -b 4096 -f ./nginx-server.key -N "" 
+          ssh-keygen -t rsa -b 4096 -f ./runner-server.key -N "" 
           # Store the public key as an artifact or secret if necessary
           echo "Public key generated"
       
       - name: Upload SSH Key
         run: |
-          echo "Public Key: $(cat ./nginx-server.key.pub)"
+          echo "Public Key: $(cat ./runner-server.key.pub)"
 
       - name: Create Terraform variable file
         run: |
