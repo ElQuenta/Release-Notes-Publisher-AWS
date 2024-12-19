@@ -1,5 +1,5 @@
 resource "aws_docdb_cluster_parameter_group" "documentdb_param_group" {
-  name        = "Release-Notes-publisher"
+  name        = "release-notes-publisher"
   family      = "docdb5.0" 
   description = "Cluster parameter group to disable TLS for DocumentDB"
 
