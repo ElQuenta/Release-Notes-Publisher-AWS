@@ -1,3 +1,14 @@
+resource "aws_docdb_cluster_parameter_group" "documentdb_param_group" {
+  name        = "Release-Notes-publisher"
+  family      = "docdb5.0" 
+  description = "Cluster parameter group to disable TLS for DocumentDB"
+
+  parameter {
+    name  = "tls"
+    value = "disabled"
+  }
+}
+
 resource "aws_docdb_cluster" "documentdb" {
   cluster_identifier      = "release-notes-db"
   engine                  = "docdb"
@@ -6,6 +17,8 @@ resource "aws_docdb_cluster" "documentdb" {
   backup_retention_period = 7
   skip_final_snapshot     = true
   port                    = var.docdb_port
+  apply_immediately       = true
+  db_cluster_parameter_group_name = aws_docdb_cluster_parameter_group.documentdb_param_group.name
 
   tags = {
     Name        = "release-notes-documentdb"
