@@ -13,7 +13,7 @@ variable "docdb_user" {
 variable "docdb_port" {
   description = "DocumentDB port"
   type        = number
-  default     = 64543
+  default     = 6543
 }
 
 variable "NRP_core_token" {
